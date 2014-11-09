@@ -1,0 +1,167 @@
+
+html, body
+{
+	margin      : 0px;
+	padding     : 0px;
+	font-family : "ヒラギノ明朝 ProN W3", "HiraMinProN-W3", "HG明朝E", "ＭＳ Ｐ明朝", "MS PMincho", "MS 明朝", serif;
+}
+
+.clear
+{
+	clear : both;
+}
+
+.print_page
+{
+    width            : 251mm;	/* A4幅   */
+    height           : 172mm;	/* A4高さ */
+    page-break-after : always;
+}
+
+.print_page:last-child
+{
+    page-break-after : auto;
+}
+
+/* header ---------------------------- */
+
+hr
+{
+	margin-top       : 3px;
+	height           : 2px;
+	border           : 0;
+	background-color : #000000;
+}
+
+div#header
+{
+	width  : 100%;
+	height : 80px;
+}
+
+div#header > div#form_title_area
+{
+	width       : 36%;
+	height      : 80px;
+	line-height : 80px;
+	font-size   : 48px;
+	font-family : "ヒラギノ明朝 ProN W6", "HiraMinProN-W6", "HG明朝E", "ＭＳ Ｐ明朝", "MS PMincho", "MS 明朝", serif;
+	float       : left;
+}
+
+div#header > div#nickname_area
+{
+	width  : 32%;
+	height : 80px;
+	float  : left;
+}
+
+div#header > div#nickname_area > div.head
+{
+	width      : 50%;
+	height     : 30px;
+	margin-top : 40px;
+	font-size  : 14px;
+	text-align : center;
+	float      : left;
+}
+
+div#header > div#nickname_area > div.name
+{
+	width      : 50%;
+	height     : 30px;
+	margin-top : 50px;
+	font-size  : 18px;
+	text-align : center;
+	float      : left;
+}
+
+div#header > div#date_area
+{
+	width      : 32%;
+	height     : 30px;
+	margin-top : 50px;
+	font-size  : 20px;
+	text-align : right;
+	float      : left;
+}
+
+/* main area ------------------------- */
+
+div#wrap
+{
+	width: 950px;
+}
+
+div#book_info_area
+{
+	width: 560px;
+	float: left;
+}
+
+div#book_picture_area
+{
+	width: 390px;
+	float: left;
+}
+
+/* book_info_area area ------------------------- */
+
+table
+{
+	border          : 2px solid #000000;
+	border-collapse : collapse;
+}
+
+table td
+{
+	height : 30px;
+	border : 1px solid #000000;
+}
+
+table td.head
+{
+	width      : 80px;
+	font-size  : 16px;
+	text-align : center;
+}
+
+table td.head > span
+{
+	font-size : 10px;
+}
+
+table td.value
+{
+	width     : 190px;
+	font-size : 14px;
+}
+
+table td.other_column
+{
+	width     : 190px;
+	font-size : 12px;
+}
+
+/* 所感 */
+table#note
+{
+	margin-top : 12px;
+}
+
+table#note td.value
+{
+	width     : 465px;
+	height    : 70px;
+	font-size : 14px;	
+}
+
+table#note td.other_column
+{
+	width     : 465px;
+	height    : 70px;
+	font-size : 12px;
+}
+
+/* book_picture_area area ---------------------- */
+
