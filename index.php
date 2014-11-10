@@ -39,13 +39,24 @@
 <?php
 
 $res = json_decode(file_get_contents("http://49.212.141.66/DYY/list.php"), true);
+
 $html = "";
 
 foreach ($res as $data)
 {
 	$html .= "<tr>";
 	$html .= "<td>".$data["timestamp"]."</td>";							// 手垢登録日
-	$html .= "<td>".$data["nickname"]."</td>";
+	$html .= "<td>";
+	if ($data["user_url"])
+	{
+		$html .= "<a href=".$data["user_url"]." target=_blank>";
+	}
+	$html .= $data["nickname"];
+	if ($data["user_url"])
+	{
+		$html .= "</a>";
+	}
+	$html .= "</td>";
 	$html .= "<td>".$data["title"]."</td>";								// 名称
 	$html .= "<td>".implode(", ", $data["categories"])."</td>";			// 分類
 	$html .= "<td>".implode(", ", $data["mark_positions"])."</td>";		// 場所
