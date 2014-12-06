@@ -139,11 +139,19 @@ if (!is_null($book_id))
 								if ($('#book_picture_area').html().indexOf('Loading') != -1)
 								{
 									$('#book_picture_area').html('');
+
+									if (data === "failed")
+									{
+										$('<strong>')
+										.html('画像の読み込みに失敗しました')
+										.appendTo('#book_picture_area');
+										return;
+									}
 								}
 
 								$('<img>')
 								.attr('src', data)
-								.attr('width', '390px')
+								.attr('width', '360px')
 								.appendTo('#book_picture_area');
 							}
 							,error:function(XMLHttpRequest, textStatus, errorThrown)
