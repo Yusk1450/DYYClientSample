@@ -102,19 +102,9 @@ if (!is_null($book_id))
 				</div><!-- book_info_area -->
 				<div id="book_picture_area">
 					<?php
-						$urls = explode(",", $data["url"]);
-						$i = 0;
-						foreach ($urls as $url)
+						if (!is_null($data["url"]) || $data["url"] !== "")
 						{
-							if ($i < 2)
-							{
-								$url = trim($url);
-								$contents = htmlspecialchars(file_get_contents($url));
-								preg_match('/https:\/\/farm.\.staticflickr\.com\/.*_z\.jpg/', $contents, $matches, PREG_OFFSET_CAPTURE);
-
-								echo '<img src="'.$matches[0][0].'" width="390px">';
-							}
-							$i++;
+							echo "<strong>Loading...</strong>";
 						}
 					?>
 				</div>
@@ -122,5 +112,49 @@ if (!is_null($book_id))
 			</div>
 		</section>
 	</article>
+	<script src="jquery-1.7.min.js"></script>
+	<script>
+		$(function()
+		{
+			var url_data = '<?php echo $data["url"] ?>';
+
+			if (url_data !== "")
+			{
+				var urls = url_data.split(",");
+				var num = 0;
+
+				for (var i = 0; i < urls.length; i++)
+				{
+					if (num < 2)
+					{
+						$.ajax(
+						{
+							async: true
+							,url:"flickr_parser.php?url="+urls[i]
+							,cache: false
+							,scriptCharset: 'utf-8'
+							,dataType: 'text'
+							,success:function(data)
+							{
+								if ($('#book_picture_area').html().indexOf('Loading') != -1)
+								{
+									$('#book_picture_area').html('');
+								}
+
+								$('<img>')
+								.attr('src', data)
+								.attr('width', '390px')
+								.appendTo('#book_picture_area');
+							}
+							,error:function(XMLHttpRequest, textStatus, errorThrown)
+							{
+							}
+						});
+					}
+					num++;
+				}
+			}
+		});
+	</script>
 </body>
 </html>
