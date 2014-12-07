@@ -104,7 +104,8 @@ if (!is_null($book_id))
 					<?php
 						if (!is_null($data["url"]) || $data["url"] !== "")
 						{
-							echo "<strong>Loading...</strong>";
+							$urls = explode(",", $data["url"]);
+							echo "<strong><span style=\"color: #ff0000;\">".count($urls)."枚</span>の画像を読み込んでいます...</strong>";
 						}
 					?>
 				</div>
@@ -136,7 +137,7 @@ if (!is_null($book_id))
 							,dataType: 'text'
 							,success:function(data)
 							{
-								if ($('#book_picture_area').html().indexOf('Loading') != -1)
+								if ($('#book_picture_area').children('strong').length > 0)
 								{
 									$('#book_picture_area').html('');
 
