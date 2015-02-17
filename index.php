@@ -3,37 +3,43 @@
 <head>
 	<meta charset="UTF-8">
 	<title>サンプルコード</title>
-	<style>
-		a { color: #000000; }
-		a:hover { color: #ff0000; }
-		th
-		{
-			color: #ffffff;
-			background-color: #4c4c4c;
-			font-size: 16px;
-			font-weight: normal;
-		}
-		th a
-		{
-			color: #ffffff;
-			text-decoration: none;
-			border-bottom: 1px dotted;
-		}
-		td
-		{
-			min-width: 120px;
-			background-color: #f4f4f4;
-			font-size: 12px;
-		}
-	</style>
+	<link href="style.css" rel="stylesheet">
 </head>
 <body>
-<table>
+
+<!--
+<div id="searchform">
+<?php
+$forms = array('場所' => json_decode(file_get_contents("http://49.212.141.66/DYY/mark_positions.php"), true),
+			   '特徴' => json_decode(file_get_contents("http://49.212.141.66/DYY/characteristics.php"), true),
+			   '種類' => json_decode(file_get_contents("http://49.212.141.66/DYY/types.php"), true),
+			   'パターン' => json_decode(file_get_contents("http://49.212.141.66/DYY/patterns.php"), true),
+			   '形状' => json_decode(file_get_contents("http://49.212.141.66/DYY/shapes.php"), true));
+$html = '';
+
+foreach ($forms as $key => $val)
+{
+	$html .= '<div class="form">';
+	$html .= '<div class="title">'.$key.'</div>';
+	$html .= '<select>';
+	$html .= '<option value=""></option>';
+	foreach ($val as $item)
+	{
+		$html .= '<option value="'.$item.'">'.$item.'</option>';
+	}
+	$html .= '</select>';
+	$html .= '</div>';
+}
+echo $html;
+?>
+</div>
+-->
+<table id="book_list">
 <tr>
 	<th id="timestamp"><a href="index.php?s=timestamp">手垢登録日</a></th>
 	<th id="nickname"><a href="index.php?s=nickname">ニックネーム</a></th>
-	<th id="title"><a href="index.php?s=title">名称</a></th>
-	<th id="categories"><a href="index.php?s=categories">分類</a></th>
+	<th id="title"><a href="index.php?s=title">手垢の名称</a></th>
+	<th id="categories"><a href="index.php?s=categories">要因</a></th>
 	<th id="mark_positions"><a href="index.php?s=mark_positions">場所</a></th>
 	<th id="characteristics"><a href="index.php?s=characteristics">特徴</a></th>
 	<th id="types"><a href="index.php?s=types">種類</a></th>
@@ -63,7 +69,7 @@ foreach ($res as $data)
 {
 	$html .= "<tr>";
 	$html .= "<td>".$data["timestamp"]."</td>";							// 手垢登録日
-	$html .= "<td>";
+	$html .= '<td class="nickname">';
 	if ($data["user_url"])
 	{
 		$html .= "<a href=".$data["user_url"]." target=_blank>";
@@ -74,8 +80,8 @@ foreach ($res as $data)
 		$html .= "</a>";
 	}
 	$html .= "</td>";
-	$html .= "<td>".$data["title"]."</td>";								// 名称
-	$html .= "<td>".implode(", ", $data["categories"])."</td>";			// 分類
+	$html .= "<td>".$data["title"]."</td>";								// 手垢の名称
+	$html .= "<td>".implode(", ", $data["categories"])."</td>";			// 要因
 	$html .= "<td>".implode(", ", $data["mark_positions"])."</td>";		// 場所
 	$html .= "<td>".implode(", ", $data["characteristics"])."</td>";	// 特徴
 	$html .= "<td>".implode(", ", $data["types"])."</td>";				// 種類
@@ -93,18 +99,20 @@ echo $html;
 
 <script src="jquery-1.7.min.js"></script>
 <script>
+	(function()
+	{
+		var s_type = <?php if (!is_null($_GET["s"])) {echo "'".$_GET["s"]."'";} else {echo "'timestamp'";} ?>;
 
-var s_type = <?php if (!is_null($_GET["s"])) {echo "'".$_GET["s"]."'";} else {echo "'timestamp'";} ?>;
-
-if (s_type !== '')
-{
-	var sel = 'th#'+s_type;
-	var text = $(sel+' > a').html();
-	$(sel+' > a').remove();
-	$(sel).append(text);
-}
-
+		if (s_type !== '')
+		{
+			var sel = 'th#'+s_type;
+			var text = $(sel+' > a').html();
+			$(sel+' > a').remove();
+			$(sel).append(text);
+		}
+	})();
 </script>
+<script src="main.js"></script>
 
 </body>
 </html>

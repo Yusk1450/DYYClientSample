@@ -1,0 +1,90 @@
+body
+{
+	margin           : 0px;
+	padding          : 0px;
+	border           : 0px;
+	background-color : #ffffff;
+	font-family      : "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", "Meiryo", "Osaka", "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+}
+
+a
+{
+	color : #000000;
+}
+
+a:hover
+{
+	color : #ff0000;
+}
+
+table#book_list th
+{
+	color            : #2f4f4f;
+	background-color : #ffffce;
+	font-size        : 16px;
+	font-weight      : normal;
+}
+
+table#book_list th a
+{
+	color           : #2f4f4f;
+	text-decoration : none;
+	border-bottom   : 1px dotted;
+}
+
+table#book_list th a:hover
+{
+	color           : #ff0000;
+	text-decoration : none;
+	border-bottom   : 1px dotted;
+}
+
+table#book_list td
+{
+	min-width        : 120px;
+	background-color : #fff3e7;
+	font-size        : 12px;
+}
+
+/*
+ * 検索フォーム
+*/
+
+div#searchform
+{
+	height : 48px;
+	margin : 20px;
+}
+
+div.form
+{
+	width       : 160px;
+	height      : 48px;
+	margin-left : 20px;
+	float       : left;
+}
+
+div.form:first-child
+{
+	margin-left : 0px;
+}
+
+div.form > div.title
+{
+	font-size : 14px;
+}
+
+select
+{
+	width          : 160px;
+	height         : 22px;
+	line-height    : 22px;
+	background     : #ffffff;
+	border         : 2px solid #cccccc;
+	border-radius  : 5px;
+	color          : #0C2245;
+	font-size      : 12px;
+	text-align     : left;
+	text-indent    : 5px;
+	vertical-align : middle;
+}

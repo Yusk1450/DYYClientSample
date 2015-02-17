@@ -39,9 +39,9 @@ if (!is_null($book_id))
 				<div id="book_info_area">
 					<table id="mark">
 						<tr>
-							<td class="head">名称</td>
+							<td class="head">手垢の名称</td>
 							<td class="value"><?php echo $data["title"]; ?></td>
-							<td class="head">分類</td>
+							<td class="head">要因</td>
 							<td class="value"><?php echo implode(", ", $data["categories"]); ?></td>
 						</tr>
 						<tr>
@@ -63,7 +63,7 @@ if (!is_null($book_id))
 							<td class="value"><?php echo implode(", ", $data["shapes"]); ?></td>
 						</tr>
 						<tr>
-							<td class="head">その他<br>特記事項<br><span>手垢のつき方など特徴的な部分を記入</span></td>
+							<td class="head">特記事項<br><span>手垢のつき方など特徴的な部分を記入</span></td>
 							<td colspan="3" class="other_column"><?php echo $data["note"]; ?></td>
 						</tr>
 					</table>
