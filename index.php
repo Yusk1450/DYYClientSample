@@ -7,33 +7,6 @@
 </head>
 <body>
 
-<!--
-<div id="searchform">
-<?php
-$forms = array('場所' => json_decode(file_get_contents("http://49.212.141.66/DYY/mark_positions.php"), true),
-			   '特徴' => json_decode(file_get_contents("http://49.212.141.66/DYY/characteristics.php"), true),
-			   '種類' => json_decode(file_get_contents("http://49.212.141.66/DYY/types.php"), true),
-			   'パターン' => json_decode(file_get_contents("http://49.212.141.66/DYY/patterns.php"), true),
-			   '形状' => json_decode(file_get_contents("http://49.212.141.66/DYY/shapes.php"), true));
-$html = '';
-
-foreach ($forms as $key => $val)
-{
-	$html .= '<div class="form">';
-	$html .= '<div class="title">'.$key.'</div>';
-	$html .= '<select>';
-	$html .= '<option value=""></option>';
-	foreach ($val as $item)
-	{
-		$html .= '<option value="'.$item.'">'.$item.'</option>';
-	}
-	$html .= '</select>';
-	$html .= '</div>';
-}
-echo $html;
-?>
-</div>
--->
 <table id="book_list">
 <tr>
 	<th id="timestamp"><a href="index.php?s=timestamp">手垢登録日</a></th>
@@ -112,7 +85,6 @@ echo $html;
 		}
 	})();
 </script>
-<script src="main.js"></script>
 
 </body>
 </html>

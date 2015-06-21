@@ -16,7 +16,9 @@ if (!$contents)
 	echo "failed";
 	return;
 }
-preg_match('/https?:\/\/farm.\.staticflickr\.com\/.*_z\.jpg/', $contents, $matches, PREG_OFFSET_CAPTURE);
+
+// preg_match('/https?:\/\/farm.\.staticflickr\.com\/.*_z\.jpg/', $contents, $matches, PREG_OFFSET_CAPTURE);
+preg_match('/https?:\/\/c.\.staticflickr\.com\/.*\.jpg/', $contents, $matches, PREG_OFFSET_CAPTURE);
 echo $matches[0][0];
 
 ?>
